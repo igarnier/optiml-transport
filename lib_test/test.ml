@@ -33,8 +33,12 @@ module Giry(X : Metric.S) =
           )
       in
       let d = matrix_of_genarray d in
-      let _, _, _, _, dist = kantorovich pr1.mass pr2.mass d 100 in
-      dist
+      match kantorovich pr1.mass pr2.mass d 100 with
+      | Camlot.Infeasible | Camlot.Unbounded ->
+        failwith "infeasible or unbounded problem"
+      | Camlot.Optimal { cost }
+      | Camlot.MaxIterReached { cost } ->
+        cost
 
     let delta (x : X.t) =
       {
