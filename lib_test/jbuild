@@ -2,7 +2,7 @@
 
 (executables
  ((names (test))
-  (libraries (camlot gromov))))
+  (libraries (camlot gromov owl batteries))))
 
 (alias
  ((name runtest)

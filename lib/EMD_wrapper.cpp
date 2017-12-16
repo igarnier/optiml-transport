@@ -157,9 +157,9 @@ CAMLprim value camlot_stub_native(value X, value Y, value D, value G, value alph
   double costv = 0.0d;
 
   int maxit = Int_val(max_iter);
- 
+
   int result = EMD_wrap(Caml_ba_array_val(X)->dim[0],
-                        Caml_ba_array_val(Y)->dim[1],
+                        Caml_ba_array_val(Y)->dim[0],
                         (double*) Caml_ba_data_val(X),
                         (double*) Caml_ba_data_val(Y),
                         (double*) Caml_ba_data_val(D),
