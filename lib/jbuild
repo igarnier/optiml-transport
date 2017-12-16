@@ -1,0 +1,7 @@
+(jbuild_version 1)
+
+(library
+ ((name        camlot)
+  (public_name camlot)
+  (cxx_names (EMD_wrapper))
+  (libraries (ctypes))))
