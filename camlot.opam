@@ -1,0 +1,20 @@
+opam-version: "1.2"
+maintainer: "ilias.gar@gmail.com"
+authors: ["Ilias Garnier"]
+homepage: "https://github.com/igarnier/camlot"
+bug-reports: "https://github.com/igarnier/camlot/issues"
+dev-repo: "git+https://github.com/igarnier/camlot.git"
+license: "Apache-2.0"
+build: [
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+depends: [
+  "jbuilder"                {build & >= "1.0+beta8"}
+  "ctypes"
+]
+available: [ ocaml-version >= "4.04.1" ]
+descr: "
+The camlot library provides bindings for solving the optimal transportation problem, i.e.
+to compute the Kantorovich distance. This is essentially a wrapper for C++ code written by Nicolas Bonneel,
+available here: http://people.seas.harvard.edu/~nbonneel/FastTransport/
+"

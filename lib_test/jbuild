@@ -1,0 +1,10 @@
+(jbuild_version 1)
+
+(executables
+ ((names (test))
+  (libraries (camlot gromov))))
+
+(alias
+ ((name runtest)
+  (deps    (test.exe))
+  (action (run ${<}))))
