@@ -38,7 +38,6 @@ external kanto_solve : vec -> vec -> mat -> mat -> vec -> vec -> fref -> int -> 
 (** The [result] type encodes the outcome of solving an instance of the optimal mass transportation
     problem. *)
 type result =
-  (** *)
   | Infeasible
   | Unbounded
   | Optimal of { cost : float; coupling : mat; u : vec; v : vec }

@@ -6,10 +6,10 @@ bug-reports: "https://github.com/igarnier/camlot/issues"
 dev-repo: "git+https://github.com/igarnier/camlot.git"
 license: "MIT"
 build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["dune" "build" "-p" name "-j" jobs]
 ]
 depends: [
-  "jbuilder"                {build & >= "1.0+beta8"}
+  "dune"                {build & >= "1.1.1"}
   "ctypes"
 ]
 available: [ ocaml-version >= "4.04.1" ]
