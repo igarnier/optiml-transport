@@ -2,5 +2,5 @@
   (name        camlot)
   (public_name camlot)
   (cxx_names EMD_wrapper)
-  (libraries ctypes)
+  (c_library_flags -lstdc++)
 )
