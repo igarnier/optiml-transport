@@ -1,0 +1,10 @@
+(executables
+ (names test)
+ (libraries camlot gromov owl batteries))
+
+(alias
+ (name runtest)
+ (deps
+  (:< test.exe))
+ (action
+  (run %{<})))
