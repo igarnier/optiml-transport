@@ -1,6 +1,6 @@
 (executables
  (names test)
- (libraries camlot gromov owl batteries))
+ (libraries camlot numerics))
 
 (alias
  (name runtest)
