@@ -14,16 +14,23 @@ module Giry (X : Metric_S) = struct
     let supp1 = pr1.support in
     let supp2 = pr2.support in
     let d =
-      Numerics.Float64.Mat.init ~lines:len1 ~cols:len2 ~f:(fun i j ->
-          X.dist supp1.(i) supp2.(j))
+      Bigarray.Array2.create Bigarray.float64 Bigarray.c_layout len1 len2
     in
+    for i = 0 to len1 - 1 do
+      for j = 0 to len2 - 1 do
+        d.{i, j} <- X.dist supp1.(i) supp2.(j)
+      done
+    done ;
     match Camlot.kantorovich ~x:pr1.mass ~y:pr2.mass ~d ~num_iter:100 with
     | Camlot.Infeasible | Camlot.Unbounded ->
         failwith "infeasible or unbounded problem"
     | Camlot.Optimal { cost; _ } | Camlot.Max_iter_reached { cost; _ } -> cost
 
   let delta (x : X.t) =
-    { support = [| x |]; mass = Numerics.Float64.Vec.of_array [| 1.0 |] }
+    { support = [| x |];
+      mass =
+        Bigarray.Array1.of_array Bigarray.float64 Bigarray.c_layout [| 1.0 |]
+    }
 end
 
 (* Testing Kantorovich in 1d (i.e. discrete probabilities on the reals) *)

@@ -944,14 +944,14 @@ namespace lemon {
         // Initialize internal data structures
         bool init() {
             if (_node_num == 0) return false;
-            
+
             // Check the sum of supply values
             _sum_supply = 0;
             for (int i = 0; i != _node_num; ++i) {
                 _sum_supply += _supply[i];
             }
             if ( fabs(_sum_supply) > _EPSILON ) return false;
-            
+
 			_sum_supply = 0;
 
             // Initialize artifical cost
@@ -1486,9 +1486,9 @@ namespace lemon {
                 for (int i=0; i<_flow.size(); i++) {
                     sumFlow+=_state[i]*_flow[i];
                 }
-            
+
                 std::cout << "Sum of the flow " << std::setprecision(20) << sumFlow << "\n" << niter << " iterations, current cost=" << curCost << "\nReduced cost=" << _state[in_arc] * (_cost[in_arc] + _pi[_source[in_arc]] -_pi[_target[in_arc]]) << "\nPrecision = "<< -EPSILON*(a) << "\n";
-            
+
                 std::cout << "Arc in = (" << _node_id(_source[in_arc]) << ", " << _node_id(_target[in_arc]) <<")\n";
                 std::cout << "Supplies = (" << _supply[_source[in_arc]] << ", " << _supply[_target[in_arc]] << ")\n";
 

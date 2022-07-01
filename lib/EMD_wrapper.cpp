@@ -153,7 +153,7 @@ CAMLprim value camlot_stub_native(value X, value Y, value D, value G, value alph
   CAMLxparam1(beta);
   CAMLxparam1(cost);
   CAMLxparam1(max_iter);
-  
+
   double costv = 0.0d;
 
   int maxit = Int_val(max_iter);
