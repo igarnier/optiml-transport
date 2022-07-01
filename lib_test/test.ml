@@ -5,6 +5,9 @@ module type Metric_S = sig
 end
 
 (* A probability on a metric space is given by an array of elements (its support) together with an array of mass *)
+
+(* The Giry functor is an endofunctor on the category of metric spaces, mapping a space to the
+   space of Borel probability measures with the Wasserstein-Kantorovich metric. *)
 module Giry (X : Metric_S) = struct
   type t = { support : X.t array; mass : Camlot.vec }
 
@@ -46,9 +49,13 @@ end
 
 module GR2 = Giry (R2)
 
+let eps_eq ?(eps = 0.0001) f1 f2 = abs_float (f1 -. f2) < eps
+
+(* Dirac is an isometry from X to Giry(X) *)
 let () =
-  Format.printf
-    "distance: %f\n"
-    (GR2.dist
-       (GR2.delta { R2.x = 0.0; y = 0.0 })
-       (GR2.delta { R2.x = 1.0; y = 1.0 }))
+  assert (
+    eps_eq
+      (GR2.dist
+         (GR2.delta { R2.x = 0.0; y = 0.0 })
+         (GR2.delta { R2.x = 1.0; y = 1.0 }))
+      (sqrt 2.))
