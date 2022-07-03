@@ -1,0 +1,6 @@
+(library
+  (name        transport)
+  (public_name optiml-transport)
+  (foreign_stubs (language cxx) (names EMD_wrapper))
+  (c_library_flags -lstdc++)
+)
