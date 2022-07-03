@@ -1,19 +1,19 @@
 (lang dune 2.8)
 
-(name camlot)
+(name optiml-transport)
 (version 0.0.1)
 (generate_opam_files true)
-(source (uri git+https://github.com/igarnier/camlot))
-(bug_reports http://github.com/igarnier/camlot)
-(homepage http://github.com/igarnier/camlot)
+(source (uri git+https://github.com/igarnier/optiml-transport))
+(bug_reports http://github.com/igarnier/optiml-transport)
+(homepage http://github.com/igarnier/optiml-transport)
 (authors "Ilias Garnier")
 (maintainers "igarnier@protonmail.com")
 (use_standard_c_and_cxx_flags true)
 
 (package
- (name camlot)
- (synopsis "Solve optimal transportation problems using the FastTransport library")
- (description "This library provides binding to the FastTransport library by Nicolas Bonneel, available here: https://perso.liris.cnrs.fr/nicolas.bonneel/FastTransport/.
-Part of the C++ wrapper is copied from https://github.com/PythonOT/POT")
+ (name optiml-transport)
+ (synopsis "Solve optimal transportation problems using the network simplex algorithm")
+ (description "This library provides bindings to the fast optimal transportation library by Nicolas Bonneel, available here: https://perso.liris.cnrs.fr/nicolas.bonneel/FastTransport/ and originally extracted from the LEMON C++ library. Part of the C++ wrapper is copied from https://github.com/PythonOT/POT")
+ (depends (ocaml (>= 4.08)))
  (license MIT)
 )

@@ -9,7 +9,7 @@ end
 (* The Giry functor is an endofunctor on the category of metric spaces, mapping a space to the
    space of Borel probability measures with the Wasserstein-Kantorovich metric. *)
 module Giry (X : Metric_S) = struct
-  type t = { support : X.t array; mass : Camlot.vec }
+  type t = { support : X.t array; mass : Transport.vec }
 
   let dist pr1 pr2 =
     let len1 = Array.length pr1.support in
@@ -24,10 +24,11 @@ module Giry (X : Metric_S) = struct
         d.{i, j} <- X.dist supp1.(i) supp2.(j)
       done
     done ;
-    match Camlot.kantorovich ~x:pr1.mass ~y:pr2.mass ~d ~num_iter:100 with
-    | Camlot.Infeasible | Camlot.Unbounded ->
+    match Transport.kantorovich ~x:pr1.mass ~y:pr2.mass ~d ~num_iter:100 with
+    | Transport.Infeasible | Transport.Unbounded ->
         failwith "infeasible or unbounded problem"
-    | Camlot.Optimal { cost; _ } | Camlot.Max_iter_reached { cost; _ } -> cost
+    | Transport.Optimal { cost; _ } | Transport.Max_iter_reached { cost; _ } ->
+        cost
 
   let delta (x : X.t) =
     { support = [| x |];

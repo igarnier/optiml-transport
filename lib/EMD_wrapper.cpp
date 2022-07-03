@@ -149,7 +149,7 @@ problem_type_t EMD_wrap(int n1, int n2, double *X, double *Y, double *D, double 
 }
 
 
-CAMLprim value camlot_stub_native(value X, value Y, value D, value G, value alpha, value beta, value cost, value max_iter)
+CAMLprim value transport_stub_native(value X, value Y, value D, value G, value alpha, value beta, value cost, value max_iter)
 {
   CAMLparam5(X,Y,D,G,alpha);
   CAMLxparam1(beta);
@@ -176,9 +176,9 @@ CAMLprim value camlot_stub_native(value X, value Y, value D, value G, value alph
   CAMLreturn(Val_int(result));
 }
 
-CAMLprim value camlot_stub_bytecode(value * argv, int argn)
+CAMLprim value transport_stub_bytecode(value * argv, int argn)
 {
-  return camlot_stub_native(argv[0], argv[1], argv[2], argv[3], argv[4],
+  return transport_stub_native(argv[0], argv[1], argv[2], argv[3], argv[4],
                             argv[5], argv[6], argv[7]);
 }
 

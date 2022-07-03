@@ -5,10 +5,10 @@ type vec = (float, Bigarray.float64_elt, Bigarray.c_layout) Bigarray.Array1.t
 (** Low-level interface to the optimal transportation solver. *)
 
 type result_internal =
-  | Camlot_Infeasible
-  | Camlot_Optimal
-  | Camlot_Unbounded
-  | Camlot_Max_iter_reached
+  | Transport_Infeasible
+  | Transport_Optimal
+  | Transport_Unbounded
+  | Transport_Max_iter_reached
 
 (** Only ever useful if you plan to use the stubs directly. This is used to store
     the cost of the transportation plan produced by [kanto_solve]. *)
@@ -28,7 +28,7 @@ type fref = { mutable field : float }
 *)
 external kanto_solve :
   vec -> vec -> mat -> mat -> vec -> vec -> fref -> int -> result_internal
-  = "camlot_stub_bytecode" "camlot_stub_native"
+  = "transport_stub_bytecode" "transport_stub_native"
 
 (** High-level interface to the optimal transportation solver. *)
 
